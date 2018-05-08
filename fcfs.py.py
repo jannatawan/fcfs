@@ -1,13 +1,19 @@
-import time
-count =input("Enter the number of processes you want to enter in the ready queue : ")
-list=[]
-for a in range(int(count)):
-  x=input("Enter the process number like p1 ,p2....  ")
-  y=input("Enetr the arrival time:  ")
-  z=input("Enter the burst time: ")
-  list.append([y,z,x])
-list.sort()
-print(list)
-print(" ")
-time.sleep(int(list[0][1]))
-print("process ",list[0][2]," started at ",list[0][0]," and ended at ",int(list[0][1])+int(list[0][0]))
+queue = []
+waitingtime = 0
+processes = int(raw_input('Enter the total no of processes you want to enter in the ready queue: '))
+for i in range(0,processes):
+    queue.append([])
+    queue[i].append(raw_input('Enter process name: '))
+    queue[i].append(int(raw_input('Enter arrival time: ')))
+    waitingtime += queue[i][1]
+    queue[i].append(int(raw_input('Enter burst time: ')))
+    print ''
+
+queue.sort()
+
+print 'Process_Name\tArrivalTime\tBurstTime'
+for i in range(0,processes):
+    print queue[i][0],'\t\t',queue[i][1],'\t\t',queue[i][2]
+    
+print 'Total waiting time of process: ',waitingtime
+print 'Average waiting time: ',(waitingtime/processes)
